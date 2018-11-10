@@ -9,12 +9,28 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var welcomeMessage: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
+    var logoutUser: LoginViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        welcomeMessage.text = ""
     }
 
+    @IBAction func getLoginForm(_ sender: UIButton) {
+        guard  let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {
+            fatalError("View Controller not found")
+        }
+        loginVC.delegate = self
+        navigationController?.pushViewController(loginVC, animated: true)
+    }
+    
+}
 
+extension ViewController: WelcomeDelegate {
+    func getStart(_ sender: String?) {
+        welcomeMessage.text = "Welcome \(sender!)"
+    }
 }
 
