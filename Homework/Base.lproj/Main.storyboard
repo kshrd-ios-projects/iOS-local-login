@@ -129,6 +129,10 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="confirmEditingChanged:" destination="XdW-6O-iKv" eventType="editingChanged" id="R5W-Wl-zBV"/>
+                                    <action selector="confirmEnd:" destination="XdW-6O-iKv" eventType="editingDidEnd" id="jLY-kP-wHM"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZC-KW-Ubc">
                                 <rect key="frame" x="151" y="351" width="73" height="38"/>
@@ -139,13 +143,36 @@
                                     <action selector="addNewUser:" destination="XdW-6O-iKv" eventType="touchUpInside" id="gd2-tv-U6W"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jgx-wY-8Fl">
+                                <rect key="frame" x="29" y="294" width="317" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.14274790184343022" blue="0.086243522647495574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9m-qD-Jq5">
+                                <rect key="frame" x="29" y="229" width="317" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.14274790179999999" blue="0.086243522650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zz-N9-uzz">
+                                <rect key="frame" x="29" y="164" width="317" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.14274790179999999" blue="0.086243522650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="czE-Bv-8Ys"/>
                     </view>
                     <connections>
                         <outlet property="confirmPasswordField" destination="j0R-48-s12" id="HPz-Ju-LZ0"/>
+                        <outlet property="confirmPasswordMessage" destination="Jgx-wY-8Fl" id="Bdq-KP-kWd"/>
                         <outlet property="passwordField" destination="LW8-fA-vKK" id="Glz-LV-mCL"/>
+                        <outlet property="signupButton" destination="5ZC-KW-Ubc" id="4iF-dj-ZhP"/>
                         <outlet property="usernameField" destination="rJG-3i-Lhi" id="CxM-uW-i3M"/>
                     </connections>
                 </viewController>
