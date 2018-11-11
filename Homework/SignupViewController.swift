@@ -32,7 +32,7 @@ class SignupViewController: UIViewController {
     }
     
     @IBAction func confirmEnd(_ sender: Any) {
-        if passwordField.text?.isEmpty ?? true || confirmPasswordField.text?.isEmpty ?? true {
+        if passwordField.text?.isEmpty ?? true && confirmPasswordField.text?.isEmpty ?? true {
             confirmPasswordMessage.text = ""
         }
     }

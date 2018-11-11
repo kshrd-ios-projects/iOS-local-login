@@ -9,10 +9,11 @@
 import UIKit
 
 protocol WelcomeDelegate: AnyObject {
-    func getStart(_ sender: String?)
+    func getStart(_ sender: [String: String])
 }
 
 class LoginViewController: UIViewController {
+    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     var tempUser: [String: String] = ["username": "", "password": ""]
@@ -21,14 +22,20 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        messageLabel.text = ""
     }
     
     @IBAction func doLogin(_ sender: Any) {
+        //print("==> after logout \(tempUser)")
+        
+        if usernameField.text?.isEmpty ?? true || passwordField.text?.isEmpty ?? true {
+            messageLabel.text = "username or password is empty"
+        } else
         if usernameField.text == tempUser["username"] && passwordField.text == tempUser["password"] {
-            delegate?.getStart(tempUser["username"])
+            delegate?.getStart(tempUser)
             self.navigationController?.popViewController(animated: true)
         } else {
-            print("Username or Password might be wrong!!")
+            messageLabel.text = "username or password might be wrong!!"
         }
     }
     
@@ -45,6 +52,7 @@ class LoginViewController: UIViewController {
 
 
 extension LoginViewController: SignupDelegate {
+    
     func registerNewUser(_ sender: [String: String]) {
         tempUser["username"] = sender["username"]
         tempUser["password"] = sender["password"]
