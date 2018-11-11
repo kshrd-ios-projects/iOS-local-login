@@ -17,8 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         welcomeMessage.text = ""
-        loginButton.backgroundColor = UIColor.blue
-        loginButton.setTitleColor(UIColor.white, for: .normal)
+        loginButtonStyle()
     }
 
     @IBAction func getLoginForm(_ sender: UIButton) {
@@ -26,8 +25,7 @@ class ViewController: UIViewController {
         if checkBtn! == "Logout" {
             welcomeMessage.text = ""
             
-            loginButton.backgroundColor = UIColor.blue
-            loginButton.setTitleColor(UIColor.white, for: .normal)
+            loginButtonStyle()
             loginButton.setTitle("Login", for: .normal)
         } else {
             guard  let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {
@@ -37,6 +35,13 @@ class ViewController: UIViewController {
             loginVC.delegate = self
             navigationController?.pushViewController(loginVC, animated: true)
         }
+    }
+    
+    func loginButtonStyle() {
+        loginButton.backgroundColor = UIColor.init(named: "#333223")
+        loginButton.layer.borderWidth = 2
+        loginButton.layer.borderColor = UIColor.white.cgColor
+        loginButton.setTitleColor(UIColor.white, for: .normal)
     }
     
 }

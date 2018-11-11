@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
             delegate?.getStart(tempUser)
             self.navigationController?.popViewController(animated: true)
         } else {
-            messageLabel.text = "username or password might be wrong!!"
+            messageLabel.text = "username or password might be wrong!"
         }
     }
     

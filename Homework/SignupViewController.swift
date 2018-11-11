@@ -24,6 +24,7 @@ class SignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         confirmPasswordMessage.text = ""
+        signupButton.isEnabled = false
     }
 
     @IBAction func addNewUser(_ sender: Any) {
