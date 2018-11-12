@@ -9,7 +9,7 @@
 import UIKit
 
 protocol WelcomeDelegate: AnyObject {
-    func getStart(_ sender: User, username: String)
+    func getStart(_ username: String)
 }
 
 class LoginViewController: UIViewController {
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
     @IBAction func doLogin(_ sender: Any) {
         
         if person.isExist(name: usernameField.text!, passwd: passwordField.text!) {
-            delegate?.getStart(person, username: usernameField.text!)
+            delegate?.getStart(usernameField.text!)
             self.navigationController?.popViewController(animated: true)
         } else if usernameField.text?.isEmpty ?? true || passwordField.text?.isEmpty ?? true {
             messageLabel.text = "username or password is empty"
