@@ -44,18 +44,23 @@ class SignupViewController: UIViewController {
 
     @IBAction func addNewUser(_ sender: Any) {
         
-        if usernameField.text?.isEmpty ?? true || passwordField.text?.isEmpty ?? true || confirmPasswordField.text?.isEmpty ?? true {
-            signupButton.alpha = 0.4
-            signupButton.isEnabled = false
-            
-        } else if user.allUsers.contains(where: { $0.username == usernameField.text! }) {
+        if user.allUsers.contains(where: { $0.username == usernameField.text! }) {
             message.text = "username is already exist. try new one!"
             
         } else {
-            user.username = usernameField.text!
-            user.password = passwordField.text!
-            user.allUsers.append(user)
+            let u = User()
+            u.username = usernameField.text!
+            u.password = passwordField.text!
+            user.allUsers.append(u)
+            
             delegate?.registerNewUser(user)
+            
+            print(": Total => \(user.allUsers.count)")
+            
+            for i in 0..<user.allUsers.count {
+                print(user.allUsers[i].username)
+            }
+            
             self.navigationController?.popViewController(animated: true)
         }
     }

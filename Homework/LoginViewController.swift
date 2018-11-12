@@ -42,9 +42,7 @@ class LoginViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         } else if usernameField.text?.isEmpty ?? true || passwordField.text?.isEmpty ?? true {
             messageLabel.text = "username or password is empty"
-        }
-        else {
-            messageLabel.numberOfLines = 2
+        } else {
             messageLabel.text = "username or password might be wrong!"
         }
     }
@@ -64,6 +62,6 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: SignupDelegate {
     func registerNewUser(_ sender: User) {
-        person.allUsers.append(sender)
+        print(": Delegate method in LoginVC \(sender.allUsers.count)")
     }
 }

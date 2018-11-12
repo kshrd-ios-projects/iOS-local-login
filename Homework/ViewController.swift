@@ -55,8 +55,6 @@ class ViewController: UIViewController {
 extension ViewController: WelcomeDelegate {
     func getStart(_ sender: User, username: String) {
         welcomeMessage.text = "Welcome \(username)"
-        print(sender)
-
         loginButton.backgroundColor = UIColor.red
         loginButton.setTitleColor(UIColor.white, for: .normal)
         loginButton.setTitle("Logout", for: .normal)
