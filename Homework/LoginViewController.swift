@@ -41,10 +41,11 @@ class LoginViewController: UIViewController {
             delegate?.getStart(person, username: usernameField.text!)
             self.navigationController?.popViewController(animated: true)
         } else if usernameField.text?.isEmpty ?? true || passwordField.text?.isEmpty ?? true {
-            messageLabel.text = "* username or password is empty"
+            messageLabel.text = "username or password is empty"
         }
         else {
-            messageLabel.text = "* username or password might be wrong!"
+            messageLabel.numberOfLines = 2
+            messageLabel.text = "username or password might be wrong!"
         }
     }
     

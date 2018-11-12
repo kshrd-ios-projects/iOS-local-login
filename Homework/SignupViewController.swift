@@ -37,18 +37,58 @@ class SignupViewController: UIViewController {
         buttonType.button = signupButton
         buttonType.outline()
         signupButton.alpha = 0.5
+        
+        usernameField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        passwordField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
 
     @IBAction func addNewUser(_ sender: Any) {
         
-        if user.allUsers.contains(where: { $0.username == usernameField.text! }) {
-            message.text = "* username is already exist. try new one!"
+        if usernameField.text?.isEmpty ?? true || passwordField.text?.isEmpty ?? true || confirmPasswordField.text?.isEmpty ?? true {
+            signupButton.alpha = 0.4
+            signupButton.isEnabled = false
+            
+        } else if user.allUsers.contains(where: { $0.username == usernameField.text! }) {
+            message.text = "username is already exist. try new one!"
+            
         } else {
             user.username = usernameField.text!
             user.password = passwordField.text!
             user.allUsers.append(user)
             delegate?.registerNewUser(user)
             self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    @objc func textFieldDidChange(_ sender: UITextField) {
+        if usernameField.text?.isEmpty ?? true || passwordField.text?.isEmpty ?? true || confirmPasswordField.text?.isEmpty ?? true {
+            signupButton.alpha = 0.4
+        }
+    }
+    
+    @IBAction func usernameChanged(_ sender: UITextField) {
+        let num = usernameField.text?.count
+        if num! < 5 {
+            usernameMessage.text = "* minimum is at least 5 characters"
+            signupButton.alpha = 0.4
+            signupButton.isEnabled = false
+        } else {
+            signupButton.alpha = 1.0
+            usernameMessage.text = ""
+            signupButton.isEnabled = true
+        }
+    }
+    
+    @IBAction func passwdChange(_ sender: UITextField) {
+        let num = passwordField.text?.count
+        if num! < 5 {
+            passwordMessage.text = "* minimum is at least 5 characters"
+            signupButton.alpha = 0.4
+            signupButton.isEnabled = false
+        } else {
+            signupButton.alpha = 1.0
+            passwordMessage.text = ""
+            signupButton.isEnabled = true
         }
     }
     
@@ -65,14 +105,11 @@ extension SignupViewController {
         if passwordField.text != confirmPasswordField.text {
             confirmPasswordMessage.text = "confirm password doesn't match!"
             signupButton.isEnabled = false
-            
             signupButton.alpha = 0.4
         } else {
             confirmPasswordMessage.text = ""
-            signupButton.isEnabled = true
-            
             signupButton.alpha = 1.0
-
+            signupButton.isEnabled = true
         }
     }
 }

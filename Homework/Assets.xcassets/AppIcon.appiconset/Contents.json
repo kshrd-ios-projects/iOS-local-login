@@ -1,21 +1,18 @@
 {
   "images" : [
     {
-      "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "Icon-40.png",
+      "size" : "20x20",
       "scale" : "2x"
     },
     {
-      "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "Icon-60.png",
+      "size" : "20x20",
       "scale" : "3x"
     },
     {
-      "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "Icon-58.png",
+      "size" : "29x29",
       "scale" : "2x"
     },
     {
@@ -37,9 +34,8 @@
       "scale" : "3x"
     },
     {
-      "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "Icon-121.png",
+      "size" : "60x60",
       "scale" : "2x"
     },
     {
@@ -49,9 +45,8 @@
       "scale" : "3x"
     },
     {
-      "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "kisspng-login-computer-icons-login-button-5ac038a542eed7.7613322415225468532742.png",
+      "size" : "1024x1024",
       "scale" : "1x"
     }
   ],
