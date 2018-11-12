@@ -9,27 +9,47 @@
 import UIKit
 
 protocol SignupDelegate: AnyObject {
-    func registerNewUser(_ sender: [String: String])
+    func registerNewUser(_ sender: User)
 }
 
 class SignupViewController: UIViewController {
-    weak var delegate: SignupDelegate?
+    
+    @IBOutlet weak var message: UILabel!
     @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var usernameMessage: UILabel!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var passwordMessage: UILabel!
     @IBOutlet weak var confirmPasswordField: UITextField!
     @IBOutlet weak var confirmPasswordMessage: UILabel!
-    
     @IBOutlet weak var signupButton: UIButton!
+    
+    weak var delegate: SignupDelegate?
+    var buttonType = ButtonStyle()
+    var user = User()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        message.text = ""
+        usernameMessage.text = ""
+        passwordMessage.text = ""
         confirmPasswordMessage.text = ""
         signupButton.isEnabled = false
+        buttonType.button = signupButton
+        buttonType.outline()
+        signupButton.alpha = 0.5
     }
 
     @IBAction func addNewUser(_ sender: Any) {
-        delegate?.registerNewUser(["username": usernameField.text!, "password": passwordField.text!])
-        self.navigationController?.popViewController(animated: true)
+        
+        if user.allUsers.contains(where: { $0.username == usernameField.text! }) {
+            message.text = "* username is already exist. try new one!"
+        } else {
+            user.username = usernameField.text!
+            user.password = passwordField.text!
+            user.allUsers.append(user)
+            delegate?.registerNewUser(user)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @IBAction func confirmEnd(_ sender: Any) {
@@ -45,9 +65,14 @@ extension SignupViewController {
         if passwordField.text != confirmPasswordField.text {
             confirmPasswordMessage.text = "confirm password doesn't match!"
             signupButton.isEnabled = false
+            
+            signupButton.alpha = 0.4
         } else {
             confirmPasswordMessage.text = ""
             signupButton.isEnabled = true
+            
+            signupButton.alpha = 1.0
+
         }
     }
 }
